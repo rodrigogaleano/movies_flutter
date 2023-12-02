@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+abstract class HomeViewModelProtocol extends ChangeNotifier {}
+
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 

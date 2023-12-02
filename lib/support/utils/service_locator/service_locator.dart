@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 
+import '../../../home/di/home_module.dart';
 import 'app_module.dart';
 import 'commons_module.dart';
 
@@ -37,6 +38,7 @@ class ServiceLocator {
 
 void initializeDependencies() {
   final appModules = <AppModule>[
+    HomeModule(),
     CommonsModule(),
   ];
 
