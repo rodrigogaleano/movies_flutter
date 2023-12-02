@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movies/home/home_view_controller.dart';
+
+import '../home/home_view_controller.dart';
 
 class MobileRouter {
   static final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
