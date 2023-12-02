@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../support/utils/service_locator/service_locator.dart';
 import 'home_view.dart';
 
-abstract class HomeProtocol {
+abstract class HomeProtocol extends HomeViewModelProtocol {
   void loadContent();
 }
 
@@ -25,6 +25,6 @@ class _HomeViewControllerState extends State<HomeViewController> {
 
   @override
   Widget build(BuildContext context) {
-    return const HomeView();
+    return HomeView(viewModel: viewModel);
   }
 }
