@@ -5,5 +5,10 @@
 
     "mappingFailureError": "Algo deu errado, estamos trabalhando nisso!",
     "requestError": "Aconteceu um erro inesperado, estamos trabalhando nisso!",
-    "timeoutError": "O tempo de requisição esgotou, tente novamente mais tarde."
+    "timeoutError": "O tempo de requisição esgotou, tente novamente mais tarde.",
+
+    "recentMoviesSectionLabel": "Recentes",
+    "popularMoviesSectionLabel": "Populares",
+    "topRatedMoviesSectionLabel": "Melhor avaliados",
+    "upComingMoviesSectionLabel": "Em breve"
 }

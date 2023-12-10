@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../localization/localize.dart';
 import '../support/components/movie_item/movie_item_view.dart';
 import '../support/style/app_colors.dart';
 import '../support/style/app_fonts.dart';
+import '../support/utils/service_locator/service_locator.dart';
 import 'components/default_movies_section.dart';
 import 'components/recent_movies_section.dart';
 
@@ -18,8 +20,9 @@ abstract class HomeViewModelProtocol extends ChangeNotifier {
 
 class HomeView extends StatelessWidget {
   final HomeViewModelProtocol viewModel;
+  final l10n = ServiceLocator.get<LocalizeProtocol>().l10n;
 
-  const HomeView({required this.viewModel, super.key});
+  HomeView({required this.viewModel, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +36,7 @@ class HomeView extends StatelessWidget {
                 SliverAppBar(
                   centerTitle: false,
                   title: Text(
-                    'Movies', // TODO: Adicionar ao l10n
+                    l10n.appTitle,
                     style: AppFonts.latoExtraBold(32, AppColors.black),
                   ),
                 ),
@@ -70,15 +73,15 @@ class HomeView extends StatelessWidget {
     return [
       RecentMoviesSection(recentMoviesViewModels: viewModel.recentMoviesViewModels),
       DefaultMoviesSection(
-        sectionTitle: 'Populares',
+        sectionTitle: l10n.popularMoviesSectionLabel,
         popularMoviesViewModels: viewModel.popularMoviesViewModels,
       ),
       DefaultMoviesSection(
-        sectionTitle: 'Melhor avaliados ',
+        sectionTitle: l10n.topRatedMoviesSectionLabel,
         popularMoviesViewModels: viewModel.topRatedMoviesViewModels,
       ),
       DefaultMoviesSection(
-        sectionTitle: 'Em breve',
+        sectionTitle: l10n.upComingMoviesSectionLabel,
         popularMoviesViewModels: viewModel.upcomingMoviesViewModels,
       ),
     ];
