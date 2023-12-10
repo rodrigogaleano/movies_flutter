@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../support/style/app_colors.dart';
 import '../support/style/app_fonts.dart';
 import 'components/recent_movie/recent_movie_view.dart';
 import 'components/recent_movies_section.dart';
@@ -29,7 +30,7 @@ class HomeView extends StatelessWidget {
                   centerTitle: false,
                   title: Text(
                     'Movies', // TODO: Adicionar ao l10n
-                    style: AppFonts.latoExtraBold(24),
+                    style: AppFonts.latoExtraBold(24, AppColors.black),
                   ),
                 ),
                 ..._bodyWidgets,

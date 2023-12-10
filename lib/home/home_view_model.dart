@@ -3,18 +3,26 @@ import 'components/recent_movie/recent_movie_view_model.dart';
 import 'home_view_controller.dart';
 import 'models/movie.dart';
 import 'use_cases/get_now_playing_movies_use_case.dart';
+import 'use_cases/get_popular_movies_use_case.dart';
 
 class HomeViewModel extends HomeProtocol {
-  bool _isLoading = false;
   String _errorMessage = '';
-  final List<Movie> _recentMovies = [];
+  bool _isRecentMoviesLoading = false;
+  bool _isPopularMoviesLoading = false;
 
+  final List<Movie> _recentMovies = [];
+  final List<Movie> _popularMovies = [];
+
+  final GetPopularMoviesUseCaseProtocol getPopularMoviesUseCaseProtocol;
   final GetNowPlayingMoviesUseCaseProtocol getNowPlayingMoviesUseCaseProtocol;
 
-  HomeViewModel({required this.getNowPlayingMoviesUseCaseProtocol});
+  HomeViewModel({
+    required this.getPopularMoviesUseCaseProtocol,
+    required this.getNowPlayingMoviesUseCaseProtocol,
+  });
 
   @override
-  bool get isLoading => _isLoading;
+  bool get isLoading => _isRecentMoviesLoading || _isPopularMoviesLoading;
 
   @override
   String get errorMessage => _errorMessage;
@@ -35,21 +43,44 @@ class HomeViewModel extends HomeProtocol {
 
   @override
   void loadContent() {
-    _setLoading(true);
+    _setLoadingAsTrue();
+    _getPopularMovies();
+    _getNowPlayingMovies();
+  }
+
+  void _getNowPlayingMovies() {
     getNowPlayingMoviesUseCaseProtocol.execute(
       success: (response) {
         _recentMovies.addAll(response);
-        _setLoading(false);
       },
       failure: (error) {
         _errorMessage = error.description;
-        _setLoading(false);
+      },
+      onComplete: () {
+        _isRecentMoviesLoading = false;
+        notifyListeners();
       },
     );
   }
 
-  void _setLoading(bool loadingStatus) {
-    _isLoading = loadingStatus;
+  void _getPopularMovies() {
+    getPopularMoviesUseCaseProtocol.execute(
+      success: (response) {
+        _popularMovies.addAll(response);
+      },
+      failure: (error) {
+        _errorMessage = error.description;
+      },
+      onComplete: () {
+        _isPopularMoviesLoading = false;
+        notifyListeners();
+      },
+    );
+  }
+
+  void _setLoadingAsTrue() {
+    _isRecentMoviesLoading = true;
+    _isPopularMoviesLoading = true;
     notifyListeners();
   }
 }

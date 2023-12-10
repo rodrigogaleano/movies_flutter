@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../support/components/cached_image.dart';
+import '../../../support/style/app_colors.dart';
 import '../../../support/style/app_fonts.dart';
 
 abstract class RecentMovieViewModelProtocol {
@@ -29,15 +30,28 @@ class RecentMovieView extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CachedImage(
-            imageUrl: viewModel.posterPath,
-            borderRadius: 16,
+          DecoratedBox(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.black.withOpacity(0.2),
+                  spreadRadius: 2,
+                  blurRadius: 6,
+                  offset: const Offset(0, 6),
+                ),
+              ],
+            ),
+            child: CachedImage(
+              imageUrl: viewModel.posterPath,
+              borderRadius: 16,
+            ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 18),
           Text(
             viewModel.title,
             maxLines: 2,
-            style: AppFonts.latoBold(20),
+            style: AppFonts.latoBold(20, AppColors.black),
             overflow: TextOverflow.ellipsis,
           ),
         ],

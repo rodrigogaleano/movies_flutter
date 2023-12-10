@@ -7,22 +7,22 @@ import '../models/movie.dart';
 typedef Success = void Function(List<Movie> movies);
 typedef Failure = void Function(ServerError error);
 
-abstract class GetNowPlayingMoviesUseCaseProtocol {
+abstract class GetPopularMoviesUseCaseProtocol {
   void execute({Success? success, Failure? failure, VoidCallback? onComplete});
 }
 
-class GetNowPlayingMoviesUseCase extends GetNowPlayingMoviesUseCaseProtocol {
+class GetPopularMoviesUseCase extends GetPopularMoviesUseCaseProtocol {
   final MoviesRoutesProtocol routes;
 
-  GetNowPlayingMoviesUseCase({required this.routes});
+  GetPopularMoviesUseCase({required this.routes});
 
   @override
   void execute({Success? success, Failure? failure, VoidCallback? onComplete}) {
-    routes.getNowPlayingMovies(
+    routes.getPopularMovies(
       success: (response) {
         try {
-          final nowPlayingMovies = Movie.fromMaps(response['results']);
-          success?.call(nowPlayingMovies);
+          final popularMovies = Movie.fromMaps(response['results']);
+          success?.call(popularMovies);
         } on Error catch (error) {
           failure?.call(error.internalError());
         }
