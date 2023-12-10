@@ -1,11 +1,11 @@
-import '../../../support/extensions/string_extensions.dart';
-import '../../models/movie.dart';
-import 'recent_movie_view.dart';
+import '../../../home/models/movie.dart';
+import '../../extensions/string_extensions.dart';
+import 'movie_item_view.dart';
 
-class RecentMovieViewModel extends RecentMovieViewModelProtocol {
+class MovieItemViewModel extends MovieItemViewModelProtocol {
   final Movie movie;
 
-  RecentMovieViewModel({
+  MovieItemViewModel({
     required this.movie,
     required this.isLastItem,
     required this.isFirstItem,

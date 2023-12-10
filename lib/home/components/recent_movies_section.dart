@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../support/style/app_colors.dart';
-import '../../support/style/app_fonts.dart';
-import 'recent_movie/recent_movie_view.dart';
-import 'recent_movies_carousel/recent_movies_carousel.dart';
+import '../../support/components/animated_movies_carousel/animated_movies_carousel.dart';
+import '../../support/components/movie_item/movie_item_view.dart';
+import 'section_title.dart';
 
 class RecentMoviesSection extends StatelessWidget {
-  final List<RecentMovieViewModelProtocol> recentMoviesViewModels;
+  final List<MovieItemViewModelProtocol> recentMoviesViewModels;
 
   const RecentMoviesSection({required this.recentMoviesViewModels, super.key});
 
@@ -16,14 +15,8 @@ class RecentMoviesSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Text(
-              'Recentes',
-              style: AppFonts.latoBold(20, AppColors.black),
-            ),
-          ),
-          RecentMovieCarousel(recentMoviesViewModels: recentMoviesViewModels),
+          const SectionTitle(title: 'Recentes'),
+          AnimatedMoviesCarousel(recentMoviesViewModels: recentMoviesViewModels),
         ],
       ),
     );

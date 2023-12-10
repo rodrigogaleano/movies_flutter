@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-import '../../../support/components/cached_image.dart';
-import '../../../support/style/app_colors.dart';
-import '../../../support/style/app_fonts.dart';
+import '../../style/app_colors.dart';
+import '../../style/app_fonts.dart';
+import '../cached_image.dart';
 
-abstract class RecentMovieViewModelProtocol {
+abstract class MovieItemViewModelProtocol {
   String get title;
   bool get isLastItem;
   bool get isFirstItem;
   String get posterPath;
 }
 
-class RecentMovieView extends StatelessWidget {
-  final RecentMovieViewModelProtocol viewModel;
+class MovieItemView extends StatelessWidget {
+  final MovieItemViewModelProtocol viewModel;
 
-  const RecentMovieView({
+  const MovieItemView({
     required this.viewModel,
     super.key,
   });
@@ -22,9 +22,10 @@ class RecentMovieView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 300,
       margin: EdgeInsets.only(
-        left: viewModel.isFirstItem ? 0 : 12,
-        right: viewModel.isLastItem ? 0 : 12,
+        left: viewModel.isFirstItem ? 24 : 20,
+        right: viewModel.isLastItem ? 24 : 0,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -45,6 +46,8 @@ class RecentMovieView extends StatelessWidget {
             child: CachedImage(
               imageUrl: viewModel.posterPath,
               borderRadius: 16,
+              width: 304,
+              height: 458,
             ),
           ),
           const SizedBox(height: 18),

@@ -1,5 +1,5 @@
-import 'components/recent_movie/recent_movie_view.dart';
-import 'components/recent_movie/recent_movie_view_model.dart';
+import '../support/components/movie_item/movie_item_view.dart';
+import '../support/components/movie_item/movie_item_view_model.dart';
 import 'home_view_controller.dart';
 import 'models/movie.dart';
 import 'use_cases/get_now_playing_movies_use_case.dart';
@@ -28,12 +28,26 @@ class HomeViewModel extends HomeProtocol {
   String get errorMessage => _errorMessage;
 
   @override
-  List<RecentMovieViewModelProtocol> get recentMoviesViewModels {
+  List<MovieItemViewModelProtocol> get recentMoviesViewModels {
     return _recentMovies.map((movie) {
       final isFirstItem = _recentMovies.indexOf(movie) == 0;
       final isLastItem = _recentMovies.indexOf(movie) == _recentMovies.length - 1;
 
-      return RecentMovieViewModel(
+      return MovieItemViewModel(
+        movie: movie,
+        isLastItem: isLastItem,
+        isFirstItem: isFirstItem,
+      );
+    }).toList();
+  }
+
+  @override
+  List<MovieItemViewModelProtocol> get popularMoviesViewModels {
+    return _popularMovies.map((movie) {
+      final isFirstItem = _popularMovies.indexOf(movie) == 0;
+      final isLastItem = _popularMovies.indexOf(movie) == _recentMovies.length - 1;
+
+      return MovieItemViewModel(
         movie: movie,
         isLastItem: isLastItem,
         isFirstItem: isFirstItem,

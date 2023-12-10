@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
+import '../support/components/movie_item/movie_item_view.dart';
 import '../support/style/app_colors.dart';
 import '../support/style/app_fonts.dart';
-import 'components/recent_movie/recent_movie_view.dart';
+import 'components/popular_movies_section.dart';
 import 'components/recent_movies_section.dart';
 
 abstract class HomeViewModelProtocol extends ChangeNotifier {
   bool get isLoading;
   String get errorMessage;
 
-  List<RecentMovieViewModelProtocol> get recentMoviesViewModels;
+  List<MovieItemViewModelProtocol> get recentMoviesViewModels;
+  List<MovieItemViewModelProtocol> get popularMoviesViewModels;
 }
 
 class HomeView extends StatelessWidget {
@@ -64,9 +66,8 @@ class HomeView extends StatelessWidget {
     }
 
     return [
-      RecentMoviesSection(
-        recentMoviesViewModels: viewModel.recentMoviesViewModels,
-      ),
+      RecentMoviesSection(recentMoviesViewModels: viewModel.recentMoviesViewModels),
+      PopularMoviesSection(popularMoviesViewModels: viewModel.popularMoviesViewModels),
     ];
   }
 }
