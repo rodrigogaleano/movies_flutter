@@ -12,9 +12,8 @@ class RecentMovieCarousel extends StatelessWidget {
   Widget build(BuildContext context) {
     return CarouselSlider(
       options: CarouselOptions(
-        height: 480,
+        height: 540,
         initialPage: 1,
-        viewportFraction: 0.7,
         enlargeCenterPage: true,
         enableInfiniteScroll: false,
         enlargeStrategy: CenterPageEnlargeStrategy.zoom,

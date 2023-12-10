@@ -18,7 +18,14 @@ class HomeViewModel extends HomeProtocol {
   @override
   List<RecentMovieViewModelProtocol> get recentMoviesViewModels {
     return _recentMovies.map((movie) {
-      return RecentMovieViewModel(movie: movie);
+      final isFirstItem = _recentMovies.indexOf(movie) == 0;
+      final isLastItem = _recentMovies.indexOf(movie) == _recentMovies.length - 1;
+
+      return RecentMovieViewModel(
+        movie: movie,
+        isLastItem: isLastItem,
+        isFirstItem: isFirstItem,
+      );
     }).toList();
   }
 

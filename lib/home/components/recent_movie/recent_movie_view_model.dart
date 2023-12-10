@@ -5,7 +5,17 @@ import 'recent_movie_view.dart';
 class RecentMovieViewModel extends RecentMovieViewModelProtocol {
   final Movie movie;
 
-  RecentMovieViewModel({required this.movie});
+  RecentMovieViewModel({
+    required this.movie,
+    required this.isLastItem,
+    required this.isFirstItem,
+  });
+
+  @override
+  final bool isLastItem;
+
+  @override
+  final bool isFirstItem;
 
   @override
   String get title => movie.title;
