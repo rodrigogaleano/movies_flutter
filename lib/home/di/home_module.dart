@@ -6,6 +6,7 @@ import '../home_view_model.dart';
 import '../use_cases/get_now_playing_movies_use_case.dart';
 import '../use_cases/get_popular_movies_use_case.dart';
 import '../use_cases/get_top_rated_movies_use_case.dart';
+import '../use_cases/get_upcoming_movies_use_case.dart';
 
 class HomeModule extends AppModule {
   @override
@@ -20,6 +21,10 @@ class HomeModule extends AppModule {
       return GetTopRatedMoviesUseCase(routes: ServiceLocator.get<MoviesRoutesProtocol>());
     });
 
+    ServiceLocator.registerFactory<GetUpcomingMoviesUseCaseProtocol>(() {
+      return GetUpcomingMoviesUseCase(routes: ServiceLocator.get<MoviesRoutesProtocol>());
+    });
+
     ServiceLocator.registerFactory<GetNowPlayingMoviesUseCaseProtocol>(() {
       return GetNowPlayingMoviesUseCase(routes: ServiceLocator.get<MoviesRoutesProtocol>());
     });
@@ -30,6 +35,7 @@ class HomeModule extends AppModule {
       return HomeViewModel(
         getPopularMoviesUseCaseProtocol: ServiceLocator.get<GetPopularMoviesUseCaseProtocol>(),
         getTopRatedMoviesUseCaseProtocol: ServiceLocator.get<GetTopRatedMoviesUseCaseProtocol>(),
+        getUpcomingMoviesUseCaseProtocol: ServiceLocator.get<GetUpcomingMoviesUseCaseProtocol>(),
         getNowPlayingMoviesUseCaseProtocol: ServiceLocator.get<GetNowPlayingMoviesUseCaseProtocol>(),
       );
     });

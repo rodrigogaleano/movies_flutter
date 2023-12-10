@@ -8,6 +8,7 @@ abstract class MoviesRoutesProtocol {
   void getNowPlayingMovies({Success? success, Failure? failure, VoidCallback? onComplete});
   void getPopularMovies({Success? success, Failure? failure, VoidCallback? onComplete});
   void getTopRatedMovies({Success? success, Failure? failure, VoidCallback? onComplete});
+  void getUpcomingMovies({Success? success, Failure? failure, VoidCallback? onComplete});
 }
 
 class MoviesRoutes extends MoviesRoutesProtocol {
@@ -35,13 +36,33 @@ class MoviesRoutes extends MoviesRoutesProtocol {
       method: 'GET',
     );
 
-    _provider.request(endpoint: endpoint, success: success, failure: failure, onComplete: onComplete);
+    _provider.request(
+      endpoint: endpoint,
+      success: success,
+      failure: failure,
+      onComplete: onComplete,
+    );
   }
 
   @override
   void getTopRatedMovies({Success? success, Failure? failure, VoidCallback? onComplete}) {
     final endpoint = Endpoint(
       path: '/movie/top_rated',
+      method: 'GET',
+    );
+
+    _provider.request(
+      endpoint: endpoint,
+      success: success,
+      failure: failure,
+      onComplete: onComplete,
+    );
+  }
+
+  @override
+  void getUpcomingMovies({Success? success, Failure? failure, VoidCallback? onComplete}) {
+    final endpoint = Endpoint(
+      path: '/movie/upcoming',
       method: 'GET',
     );
 

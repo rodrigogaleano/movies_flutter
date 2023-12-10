@@ -13,6 +13,7 @@ abstract class HomeViewModelProtocol extends ChangeNotifier {
   List<MovieItemViewModelProtocol> get recentMoviesViewModels;
   List<MovieItemViewModelProtocol> get popularMoviesViewModels;
   List<MovieItemViewModelProtocol> get topRatedMoviesViewModels;
+  List<MovieItemViewModelProtocol> get upcomingMoviesViewModels;
 }
 
 class HomeView extends StatelessWidget {
@@ -75,6 +76,10 @@ class HomeView extends StatelessWidget {
       DefaultMoviesSection(
         sectionTitle: 'Melhor avaliados ',
         popularMoviesViewModels: viewModel.topRatedMoviesViewModels,
+      ),
+      DefaultMoviesSection(
+        sectionTitle: 'Em breve',
+        popularMoviesViewModels: viewModel.upcomingMoviesViewModels,
       ),
     ];
   }
