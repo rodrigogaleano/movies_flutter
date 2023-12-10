@@ -6,6 +6,7 @@ import 'components/recent_movies_section.dart';
 
 abstract class HomeViewModelProtocol extends ChangeNotifier {
   bool get isLoading;
+  String get errorMessage;
 
   List<RecentMovieViewModelProtocol> get recentMoviesViewModels;
 }
@@ -48,6 +49,16 @@ class HomeView extends StatelessWidget {
             child: CircularProgressIndicator(),
           ),
         ),
+      ];
+    }
+
+    if (viewModel.errorMessage.isNotEmpty) {
+      return [
+        SliverFillRemaining(
+          child: Center(
+            child: Text(viewModel.errorMessage),
+          ),
+        )
       ];
     }
 

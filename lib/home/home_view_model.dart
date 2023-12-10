@@ -6,6 +6,7 @@ import 'use_cases/get_now_playing_movies_use_case.dart';
 
 class HomeViewModel extends HomeProtocol {
   bool _isLoading = false;
+  String _errorMessage = '';
   final List<Movie> _recentMovies = [];
 
   final GetNowPlayingMoviesUseCaseProtocol getNowPlayingMoviesUseCaseProtocol;
@@ -14,6 +15,9 @@ class HomeViewModel extends HomeProtocol {
 
   @override
   bool get isLoading => _isLoading;
+
+  @override
+  String get errorMessage => _errorMessage;
 
   @override
   List<RecentMovieViewModelProtocol> get recentMoviesViewModels {
@@ -38,6 +42,7 @@ class HomeViewModel extends HomeProtocol {
         _setLoading(false);
       },
       failure: (error) {
+        _errorMessage = error.description;
         _setLoading(false);
       },
     );
