@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../support/components/animated_movies_carousel/animated_movies_carousel.dart';
+import '../../support/components/animated_movies_carousel.dart';
 import '../../support/components/movie_item/movie_item_view.dart';
 import 'section_title.dart';
 

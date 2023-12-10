@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-import '../movie_item/movie_item_view.dart';
+import 'movie_item/movie_item_view.dart';
 
 class AnimatedMoviesCarousel extends StatelessWidget {
   final List<MovieItemViewModelProtocol> recentMoviesViewModels;

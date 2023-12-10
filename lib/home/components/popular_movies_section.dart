@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../support/components/horizontal_movies_list/horizontal_movies_list.dart';
+import '../../support/components/horizontal_movies_list.dart';
 import '../../support/components/movie_item/movie_item_view.dart';
 import 'section_title.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../movie_item/movie_item_view.dart';
+import 'movie_item/movie_item_view.dart';
 
 class HorizontalMoviesList extends StatelessWidget {
   final List<MovieItemViewModelProtocol> viewModels;
