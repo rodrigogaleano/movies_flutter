@@ -1,4 +1,4 @@
-import '../../../home/models/movie.dart';
+import '../../../features/home/models/movie.dart';
 import '../../extensions/string_extensions.dart';
 import 'movie_item_view.dart';
 

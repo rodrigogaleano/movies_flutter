@@ -1,6 +1,6 @@
-import '../../api/routes/movies_routes.dart';
-import '../../support/utils/service_locator/app_module.dart';
-import '../../support/utils/service_locator/service_locator.dart';
+import '../../../api/routes/movies_routes.dart';
+import '../../../support/utils/service_locator/app_module.dart';
+import '../../../support/utils/service_locator/service_locator.dart';
 import '../home_view_controller.dart';
 import '../home_view_model.dart';
 import '../use_cases/get_now_playing_movies_use_case.dart';

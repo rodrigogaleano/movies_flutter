@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../localization/localize.dart';
-import '../../support/components/animated_movies_carousel.dart';
-import '../../support/components/movie_item/movie_item_view.dart';
-import '../../support/utils/service_locator/service_locator.dart';
+import '../../../localization/localize.dart';
+import '../../../support/components/animated_movies_carousel.dart';
+import '../../../support/components/movie_item/movie_item_view.dart';
+import '../../../support/utils/service_locator/service_locator.dart';
 import 'section_title.dart';
 
 class RecentMoviesSection extends StatelessWidget {

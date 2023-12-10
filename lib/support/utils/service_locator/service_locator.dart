@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
 
-import '../../../home/di/home_module.dart';
+import '../../../features/home/di/home_module.dart';
 import 'app_module.dart';
 import 'commons_module.dart';
 

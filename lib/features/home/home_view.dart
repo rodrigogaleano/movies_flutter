@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../localization/localize.dart';
-import '../support/components/movie_item/movie_item_view.dart';
-import '../support/style/app_colors.dart';
-import '../support/style/app_fonts.dart';
-import '../support/utils/service_locator/service_locator.dart';
+import '../../localization/localize.dart';
+import '../../support/components/movie_item/movie_item_view.dart';
+import '../../support/style/app_colors.dart';
+import '../../support/style/app_fonts.dart';
+import '../../support/utils/service_locator/service_locator.dart';
 import 'components/default_movies_section.dart';
 import 'components/recent_movies_section.dart';
 

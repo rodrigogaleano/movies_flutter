@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../support/style/app_colors.dart';
-import '../../support/style/app_fonts.dart';
+import '../../../support/style/app_colors.dart';
+import '../../../support/style/app_fonts.dart';
 
 class SectionTitle extends StatelessWidget {
   final String title;

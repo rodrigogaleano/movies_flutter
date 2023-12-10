@@ -1,7 +1,7 @@
 import 'dart:ui';
 
-import '../../api/routes/movies_routes.dart';
-import '../../models/server_error.dart';
+import '../../../api/routes/movies_routes.dart';
+import '../../../models/server_error.dart';
 import '../models/movie.dart';
 
 typedef Success = void Function(List<Movie> movies);

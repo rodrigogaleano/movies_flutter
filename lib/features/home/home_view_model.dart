@@ -1,5 +1,5 @@
-import '../support/components/movie_item/movie_item_view.dart';
-import '../support/components/movie_item/movie_item_view_model.dart';
+import '../../support/components/movie_item/movie_item_view.dart';
+import '../../support/components/movie_item/movie_item_view_model.dart';
 import 'home_view_controller.dart';
 import 'models/movie.dart';
 import 'use_cases/get_now_playing_movies_use_case.dart';
