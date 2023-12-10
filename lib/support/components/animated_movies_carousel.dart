@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'movie_item/movie_item_view.dart';
 
 class AnimatedMoviesCarousel extends StatelessWidget {
-  final List<MovieItemViewModelProtocol> recentMoviesViewModels;
+  final List<MovieItemViewModelProtocol> viewModels;
 
-  const AnimatedMoviesCarousel({required this.recentMoviesViewModels, super.key});
+  const AnimatedMoviesCarousel({required this.viewModels, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class AnimatedMoviesCarousel extends StatelessWidget {
         enableInfiniteScroll: false,
         enlargeStrategy: CenterPageEnlargeStrategy.zoom,
       ),
-      items: recentMoviesViewModels.map((viewModel) {
+      items: viewModels.map((viewModel) {
         return MovieItemView(viewModel: viewModel);
       }).toList(),
     );

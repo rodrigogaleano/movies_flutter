@@ -4,10 +4,12 @@ import '../../support/components/horizontal_movies_list.dart';
 import '../../support/components/movie_item/movie_item_view.dart';
 import 'section_title.dart';
 
-class PopularMoviesSection extends StatelessWidget {
+class DefaultMoviesSection extends StatelessWidget {
+  final String sectionTitle;
   final List<MovieItemViewModelProtocol> popularMoviesViewModels;
 
-  const PopularMoviesSection({
+  const DefaultMoviesSection({
+    required this.sectionTitle,
     required this.popularMoviesViewModels,
     super.key,
   });
@@ -18,7 +20,7 @@ class PopularMoviesSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SectionTitle(title: 'Populares'),
+          SectionTitle(title: sectionTitle),
           HorizontalMoviesList(viewModels: popularMoviesViewModels),
         ],
       ),

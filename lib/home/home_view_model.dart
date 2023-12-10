@@ -4,25 +4,32 @@ import 'home_view_controller.dart';
 import 'models/movie.dart';
 import 'use_cases/get_now_playing_movies_use_case.dart';
 import 'use_cases/get_popular_movies_use_case.dart';
+import 'use_cases/get_top_rated_movies_use_case.dart';
 
 class HomeViewModel extends HomeProtocol {
   String _errorMessage = '';
   bool _isRecentMoviesLoading = false;
   bool _isPopularMoviesLoading = false;
+  bool _isTopRatedMoviesLoading = false;
 
   final List<Movie> _recentMovies = [];
   final List<Movie> _popularMovies = [];
+  final List<Movie> _topRatedMovies = [];
 
   final GetPopularMoviesUseCaseProtocol getPopularMoviesUseCaseProtocol;
+  final GetTopRatedMoviesUseCaseProtocol getTopRatedMoviesUseCaseProtocol;
   final GetNowPlayingMoviesUseCaseProtocol getNowPlayingMoviesUseCaseProtocol;
 
   HomeViewModel({
     required this.getPopularMoviesUseCaseProtocol,
+    required this.getTopRatedMoviesUseCaseProtocol,
     required this.getNowPlayingMoviesUseCaseProtocol,
   });
 
   @override
-  bool get isLoading => _isRecentMoviesLoading || _isPopularMoviesLoading;
+  bool get isLoading {
+    return _isRecentMoviesLoading || _isPopularMoviesLoading || _isTopRatedMoviesLoading;
+  }
 
   @override
   String get errorMessage => _errorMessage;
@@ -56,9 +63,24 @@ class HomeViewModel extends HomeProtocol {
   }
 
   @override
+  List<MovieItemViewModelProtocol> get topRatedMoviesViewModels {
+    return _topRatedMovies.map((movie) {
+      final isFirstItem = _topRatedMovies.indexOf(movie) == 0;
+      final isLastItem = _topRatedMovies.indexOf(movie) == _topRatedMovies.length - 1;
+
+      return MovieItemViewModel(
+        movie: movie,
+        isLastItem: isLastItem,
+        isFirstItem: isFirstItem,
+      );
+    }).toList();
+  }
+
+  @override
   void loadContent() {
     _setLoadingAsTrue();
     _getPopularMovies();
+    _getTopRatedMovies();
     _getNowPlayingMovies();
   }
 
@@ -92,9 +114,25 @@ class HomeViewModel extends HomeProtocol {
     );
   }
 
+  void _getTopRatedMovies() {
+    getTopRatedMoviesUseCaseProtocol.execute(
+      success: (response) {
+        _topRatedMovies.addAll(response);
+      },
+      failure: (error) {
+        _errorMessage = error.description;
+      },
+      onComplete: () {
+        _isTopRatedMoviesLoading = false;
+        notifyListeners();
+      },
+    );
+  }
+
   void _setLoadingAsTrue() {
     _isRecentMoviesLoading = true;
     _isPopularMoviesLoading = true;
+    _isTopRatedMoviesLoading = true;
     notifyListeners();
   }
 }

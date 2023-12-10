@@ -16,7 +16,7 @@ class RecentMoviesSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SectionTitle(title: 'Recentes'),
-          AnimatedMoviesCarousel(recentMoviesViewModels: recentMoviesViewModels),
+          AnimatedMoviesCarousel(viewModels: recentMoviesViewModels),
         ],
       ),
     );

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../support/components/movie_item/movie_item_view.dart';
 import '../support/style/app_colors.dart';
 import '../support/style/app_fonts.dart';
-import 'components/popular_movies_section.dart';
+import 'components/default_movies_section.dart';
 import 'components/recent_movies_section.dart';
 
 abstract class HomeViewModelProtocol extends ChangeNotifier {
@@ -12,6 +12,7 @@ abstract class HomeViewModelProtocol extends ChangeNotifier {
 
   List<MovieItemViewModelProtocol> get recentMoviesViewModels;
   List<MovieItemViewModelProtocol> get popularMoviesViewModels;
+  List<MovieItemViewModelProtocol> get topRatedMoviesViewModels;
 }
 
 class HomeView extends StatelessWidget {
@@ -32,7 +33,7 @@ class HomeView extends StatelessWidget {
                   centerTitle: false,
                   title: Text(
                     'Movies', // TODO: Adicionar ao l10n
-                    style: AppFonts.latoExtraBold(24, AppColors.black),
+                    style: AppFonts.latoExtraBold(32, AppColors.black),
                   ),
                 ),
                 ..._bodyWidgets,
@@ -67,7 +68,14 @@ class HomeView extends StatelessWidget {
 
     return [
       RecentMoviesSection(recentMoviesViewModels: viewModel.recentMoviesViewModels),
-      PopularMoviesSection(popularMoviesViewModels: viewModel.popularMoviesViewModels),
+      DefaultMoviesSection(
+        sectionTitle: 'Populares',
+        popularMoviesViewModels: viewModel.popularMoviesViewModels,
+      ),
+      DefaultMoviesSection(
+        sectionTitle: 'Melhor avaliados ',
+        popularMoviesViewModels: viewModel.topRatedMoviesViewModels,
+      ),
     ];
   }
 }
