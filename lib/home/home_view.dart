@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../support/style/app_fonts.dart';
 import 'components/recent_movie/recent_movie_view.dart';
 import 'components/recent_movies_section.dart';
 
@@ -23,8 +24,12 @@ class HomeView extends StatelessWidget {
           builder: (_, __) {
             return CustomScrollView(
               slivers: [
-                const SliverAppBar(
-                  title: Text('Movies'),
+                SliverAppBar(
+                  centerTitle: false,
+                  title: Text(
+                    'Movies', // TODO: Adicionar ao l10n
+                    style: AppFonts.latoExtraBold(24),
+                  ),
                 ),
                 ..._bodyWidgets,
               ],
@@ -39,7 +44,9 @@ class HomeView extends StatelessWidget {
     if (viewModel.isLoading) {
       return [
         const SliverFillRemaining(
-          child: CircularProgressIndicator(),
+          child: Center(
+            child: CircularProgressIndicator(),
+          ),
         ),
       ];
     }

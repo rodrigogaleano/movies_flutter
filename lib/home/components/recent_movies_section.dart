@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../support/style/app_fonts.dart';
 import 'recent_movie/recent_movie_view.dart';
+import 'recent_movies_carousel/recent_movies_carousel.dart';
 
 class RecentMoviesSection extends StatelessWidget {
   final List<RecentMovieViewModelProtocol> recentMoviesViewModels;
@@ -11,20 +13,16 @@ class RecentMoviesSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Text('Recentes'),
-          SizedBox(
-            height: 600,
-            child: ListView.builder(
-              itemCount: recentMoviesViewModels.length,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (_, index) {
-                final viewModel = recentMoviesViewModels[index];
-
-                return RecentMovieView(viewModel: viewModel);
-              },
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Text(
+              'Recentes',
+              style: AppFonts.latoBold(20),
             ),
           ),
+          RecentMovieCarousel(recentMoviesViewModels: recentMoviesViewModels),
         ],
       ),
     );
