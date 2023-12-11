@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 
 import '../../../features/home/di/home_module.dart';
+import '../../../features/movie_details/di/movie_details_module.dart';
 import 'app_module.dart';
 import 'commons_module.dart';
 
@@ -40,6 +41,7 @@ void initializeDependencies() {
   final appModules = <AppModule>[
     HomeModule(),
     CommonsModule(),
+    MovieDetailsModule(),
   ];
 
   for (final module in appModules) {

@@ -7,7 +7,7 @@ import 'use_cases/get_popular_movies_use_case.dart';
 import 'use_cases/get_top_rated_movies_use_case.dart';
 import 'use_cases/get_upcoming_movies_use_case.dart';
 
-class HomeViewModel extends HomeProtocol {
+class HomeViewModel extends HomeProtocol implements MovieItemDelegate {
   String _errorMessage = '';
   bool _isRecentMoviesLoading = false;
   bool _isPopularMoviesLoading = false;
@@ -47,6 +47,7 @@ class HomeViewModel extends HomeProtocol {
 
       return MovieItemViewModel(
         movie: movie,
+        delegate: this,
         isLastItem: isLastItem,
         isFirstItem: isFirstItem,
       );
@@ -61,6 +62,7 @@ class HomeViewModel extends HomeProtocol {
 
       return MovieItemViewModel(
         movie: movie,
+        delegate: this,
         isLastItem: isLastItem,
         isFirstItem: isFirstItem,
       );
@@ -75,6 +77,7 @@ class HomeViewModel extends HomeProtocol {
 
       return MovieItemViewModel(
         movie: movie,
+        delegate: this,
         isLastItem: isLastItem,
         isFirstItem: isFirstItem,
       );
@@ -89,6 +92,7 @@ class HomeViewModel extends HomeProtocol {
 
       return MovieItemViewModel(
         movie: movie,
+        delegate: this,
         isLastItem: isLastItem,
         isFirstItem: isFirstItem,
       );
@@ -102,6 +106,11 @@ class HomeViewModel extends HomeProtocol {
     _getTopRatedMovies();
     _getUpcomingMovies();
     _getNowPlayingMovies();
+  }
+
+  @override
+  void didTapMovie(int movieId) {
+    onTapMovie?.call(movieId);
   }
 
   void _getNowPlayingMovies() {

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../router/mobile_router.dart';
 import '../../support/utils/service_locator/service_locator.dart';
 import 'home_view.dart';
 
 abstract class HomeProtocol extends HomeViewModelProtocol {
   void loadContent();
+
+  void Function(int movieId)? onTapMovie;
 }
 
 class HomeViewController extends StatefulWidget {
@@ -20,11 +24,18 @@ class _HomeViewControllerState extends State<HomeViewController> {
   @override
   void initState() {
     super.initState();
+    _bind();
     viewModel.loadContent();
   }
 
   @override
   Widget build(BuildContext context) {
     return HomeView(viewModel: viewModel);
+  }
+
+  void _bind() {
+    viewModel.onTapMovie = (movieId) {
+      context.goNamed(MobileRouter.movieDetails, extra: movieId);
+    };
   }
 }
