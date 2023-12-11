@@ -10,5 +10,10 @@
     "recentMoviesSectionLabel": "Recentes",
     "popularMoviesSectionLabel": "Populares",
     "topRatedMoviesSectionLabel": "Melhor avaliados",
-    "upComingMoviesSectionLabel": "Em breve"
+    "upComingMoviesSectionLabel": "Em breve",
+
+    "movieRuntimeLabel": "Duração: {minutes} min",
+    "@movieRuntimeLabel": {
+      "placeholders": {"minutes": {}}
+    }
 }

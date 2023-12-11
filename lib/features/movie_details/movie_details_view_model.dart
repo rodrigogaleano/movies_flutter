@@ -32,6 +32,24 @@ class MovieDetailsViewModel extends MovieDetailsProtocol {
   String get overview => _movie?.overview ?? '';
 
   @override
+  String get genres => _movie?.genres.join(', ') ?? '';
+
+  @override
+  String get voteAverage => _movie?.voteAverage.toStringAsFixed(1) ?? '';
+
+  @override
+  double get voteAverageValue => (_movie?.voteAverage ?? 0) / 10;
+
+  @override
+  String get runtime => _movie?.runtime.toString() ?? '';
+
+  @override
+  String get releaseYear {
+    final year = (_movie?.releaseDate.split('-'))?.first;
+    return year ?? '';
+  }
+
+  @override
   void loadContent() {
     _setLoading(true);
     getMovieDetailsUseCaseProtocol.execute(
