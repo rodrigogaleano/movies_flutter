@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../support/utils/service_locator/service_locator.dart';
 import 'movie_details_view.dart';
 
-abstract class MovieDetailsProtocol extends MovieDetailsViewModelProtocol {}
+abstract class MovieDetailsProtocol extends MovieDetailsViewModelProtocol {
+  void loadContent();
+}
 
 class MovieDetailsViewController extends StatefulWidget {
   final int movieId;
@@ -21,6 +23,7 @@ class _MovieDetailsViewControllerState extends State<MovieDetailsViewController>
   void initState() {
     super.initState();
     viewModel = ServiceLocator.get<MovieDetailsProtocol>(param: widget.movieId);
+    viewModel.loadContent();
   }
 
   @override

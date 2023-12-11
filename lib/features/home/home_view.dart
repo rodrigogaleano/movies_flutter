@@ -66,7 +66,7 @@ class HomeView extends StatelessWidget {
           child: Center(
             child: Text(viewModel.errorMessage),
           ),
-        )
+        ),
       ];
     }
 
