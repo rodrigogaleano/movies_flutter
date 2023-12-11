@@ -11,5 +11,10 @@ class AppThemes {
 
     /// Scaffold
     scaffoldBackgroundColor: AppColors.white,
+
+    /// CircularProgressIndicator
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
+      color: AppColors.black,
+    ),
   );
 }

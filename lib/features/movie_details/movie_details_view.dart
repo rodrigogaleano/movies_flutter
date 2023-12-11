@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../localization/localize.dart';
-import '../../support/components/cached_image.dart';
 import '../../support/style/app_colors.dart';
 import '../../support/style/app_fonts.dart';
 import '../../support/utils/service_locator/service_locator.dart';
+import 'components/movie_details_app_bar.dart';
 
 abstract class MovieDetailsViewModelProtocol with ChangeNotifier {
   bool get isLoading;
@@ -66,12 +66,7 @@ class MovieDetailsView extends StatelessWidget {
     }
 
     return [
-      SliverAppBar(
-        expandedHeight: 300,
-        flexibleSpace: FlexibleSpaceBar(
-          background: CachedImage(imageUrl: viewModel.backdropPath),
-        ),
-      ),
+      MovieDetailsAppBar(backdropPath: viewModel.backdropPath),
       SliverToBoxAdapter(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
