@@ -14,6 +14,14 @@ class AppFonts {
     );
   }
 
+  static TextStyle latoSemiBold(double size, [Color? color]) {
+    return GoogleFonts.lato(
+      color: color,
+      fontSize: size,
+      fontWeight: FontWeight.w600,
+    );
+  }
+
   static TextStyle latoBold(double size, [Color? color]) {
     return GoogleFonts.lato(
       color: color,

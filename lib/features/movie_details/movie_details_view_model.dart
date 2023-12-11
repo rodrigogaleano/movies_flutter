@@ -50,6 +50,15 @@ class MovieDetailsViewModel extends MovieDetailsProtocol {
   }
 
   @override
+  bool get hasCollection => _movie?.collection != null;
+
+  @override
+  String get collectionBackdropPath => _movie?.collection?.backdropPath.toPosterPathUrl() ?? '';
+
+  @override
+  String get collectionName => _movie?.collection?.name ?? '';
+
+  @override
   void loadContent() {
     _setLoading(true);
     getMovieDetailsUseCaseProtocol.execute(

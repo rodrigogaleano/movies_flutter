@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../localization/localize.dart';
+import '../../support/components/cached_image.dart';
 import '../../support/style/app_colors.dart';
 import '../../support/style/app_fonts.dart';
 import '../../support/utils/service_locator/service_locator.dart';
@@ -8,6 +9,7 @@ import 'components/movie_details_app_bar.dart';
 
 abstract class MovieDetailsViewModelProtocol with ChangeNotifier {
   bool get isLoading;
+  bool get hasCollection;
 
   String get title;
   String get genres;
@@ -17,6 +19,8 @@ abstract class MovieDetailsViewModelProtocol with ChangeNotifier {
   String get voteAverage;
   String get errorMessage;
   String get backdropPath;
+  String get collectionName;
+  String get collectionBackdropPath;
 
   double get voteAverageValue;
 }
@@ -75,9 +79,9 @@ class MovieDetailsView extends StatelessWidget {
             children: [
               Text(
                 viewModel.title,
-                style: AppFonts.latoBold(26, AppColors.black),
+                style: AppFonts.latoBold(28, AppColors.black),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -86,16 +90,16 @@ class MovieDetailsView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          viewModel.genres,
-                          style: AppFonts.latoRegular(16, AppColors.black),
+                          l10n.movieReleaseYearLabel(viewModel.releaseYear),
+                          style: AppFonts.latoSemiBold(20, AppColors.black.withOpacity(0.8)),
                         ),
                         Text(
                           l10n.movieRuntimeLabel(viewModel.runtime),
-                          style: AppFonts.latoRegular(16, AppColors.black),
+                          style: AppFonts.latoSemiBold(20, AppColors.black.withOpacity(0.8)),
                         ),
                         Text(
-                          viewModel.releaseYear,
-                          style: AppFonts.latoRegular(16, AppColors.black),
+                          viewModel.genres,
+                          style: AppFonts.latoSemiBold(20, AppColors.black.withOpacity(0.8)),
                         ),
                       ],
                     ),
@@ -108,7 +112,7 @@ class MovieDetailsView extends StatelessWidget {
                         height: 40,
                         child: CircularProgressIndicator(
                           value: viewModel.voteAverageValue,
-                          backgroundColor: AppColors.black.withOpacity(0.1),
+                          backgroundColor: AppColors.lightGray,
                         ),
                       ),
                       Text(viewModel.voteAverage),
@@ -119,8 +123,34 @@ class MovieDetailsView extends StatelessWidget {
               const SizedBox(height: 40),
               Text(
                 viewModel.overview,
-                style: AppFonts.latoRegular(16, AppColors.black),
-              )
+                style: AppFonts.latoRegular(20, AppColors.black),
+              ),
+              const SizedBox(height: 40),
+              Visibility(
+                visible: viewModel.hasCollection,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Coleção', // TODO: Passar string para o l10n
+                      style: AppFonts.latoSemiBold(26, AppColors.black),
+                    ),
+                    const SizedBox(height: 20),
+                    // TODO: Criar um componente para coleção
+                    CachedImage(
+                      imageUrl: viewModel.collectionBackdropPath,
+                      borderRadius: 16,
+                      width: double.infinity,
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      viewModel.collectionName,
+                      style: AppFonts.latoSemiBold(20, AppColors.black),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 40),
             ],
           ),
         ),

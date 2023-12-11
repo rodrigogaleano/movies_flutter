@@ -15,5 +15,9 @@
     "movieRuntimeLabel": "Duração: {minutes} min",
     "@movieRuntimeLabel": {
       "placeholders": {"minutes": {}}
+    },
+    "movieReleaseYearLabel": "Ano: {year}",
+    "@movieReleaseYearLabel": {
+      "placeholders": {"year": {}}
     }
 }
