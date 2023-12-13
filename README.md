@@ -5,11 +5,13 @@ Um projeto feito em Flutter que consome a API do [TMDB](https://pokeapi.co/).
 ## Status
 
 Esse projeto ainda se encontra em desenvolvimento.
-<!-- ## Screenshots do Projeto
 
-<img width="250" src="https://github.com/rodrigogaleano/pokedex_flutter/assets/95086945/0881aaeb-4d76-4555-8d42-8d140aad3f59"/>
-<img width="250" src="https://github.com/rodrigogaleano/pokedex_flutter/assets/95086945/e3be778f-d508-4380-8588-3ad04360284b"/>
-<img width="250" src="https://github.com/rodrigogaleano/pokedex_flutter/assets/95086945/5a46cd65-8399-45a3-845d-233644f72218"/> -->
+## Screenshots do Projeto
+
+<img width="250" src="https://github.com/rodrigogaleano/movies_flutter/assets/95086945/202be45b-f6cc-49c8-b546-31bdcb4b7cb9"/>
+<img width="250" src="https://github.com/rodrigogaleano/movies_flutter/assets/95086945/8f46cb39-2564-4df7-8a2e-16aea8163961"/>
+<img width="250" src="https://github.com/rodrigogaleano/movies_flutter/assets/95086945/93299e4e-726a-4479-8c51-b92879faefa2"/>
+<img width="250" src="https://github.com/rodrigogaleano/movies_flutter/assets/95086945/c975d454-4bd9-4058-9944-5d7f553719e6"/>
 
 ## Intruções de Instalação
 
