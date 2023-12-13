@@ -75,6 +75,11 @@ class MovieDetailsViewModel extends MovieDetailsProtocol {
     );
   }
 
+  @override
+  void didTapBack() {
+    onTapBack?.call();
+  }
+
   void _setLoading(bool loadingStatus) {
     _isLoading = loadingStatus;
     notifyListeners();

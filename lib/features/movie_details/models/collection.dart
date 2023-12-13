@@ -3,8 +3,23 @@ class Collection {
   String name;
   String backdropPath;
 
-  Collection.fromMap(Map<String, dynamic> map)
-      : id = map['id'],
-        name = map['name'],
-        backdropPath = map['backdrop_path'];
+  Collection({
+    required this.id,
+    required this.name,
+    required this.backdropPath,
+  });
+
+  static Collection? fromMap(Map<String, dynamic>? map) {
+    final collectionMap = map;
+
+    if (collectionMap != null) {
+      return Collection(
+        id: collectionMap['id'],
+        name: collectionMap['name'],
+        backdropPath: collectionMap['backdrop_path'],
+      );
+    }
+
+    return null;
+  }
 }

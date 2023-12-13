@@ -23,6 +23,8 @@ abstract class MovieDetailsViewModelProtocol with ChangeNotifier {
   String get collectionBackdropPath;
 
   double get voteAverageValue;
+
+  void didTapBack();
 }
 
 class MovieDetailsView extends StatelessWidget {
@@ -70,7 +72,10 @@ class MovieDetailsView extends StatelessWidget {
     }
 
     return [
-      MovieDetailsAppBar(backdropPath: viewModel.backdropPath),
+      MovieDetailsAppBar(
+        backdropPath: viewModel.backdropPath,
+        onTapBack: viewModel.didTapBack,
+      ),
       SliverToBoxAdapter(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
